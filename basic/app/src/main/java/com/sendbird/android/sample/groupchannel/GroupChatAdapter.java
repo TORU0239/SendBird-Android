@@ -625,8 +625,6 @@ class GroupChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             messageText.setText(message.getMessage());
             timeText.setText(DateUtils.formatTime(message.getCreatedAt()));
 
-            Log.e("Toru", "custom type: " + message.getCustomType());
-
             if (message.getUpdatedAt() > 0) {
                 editedText.setVisibility(View.VISIBLE);
             } else {
@@ -730,8 +728,7 @@ class GroupChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 ImageUtils.displayRoundImageFromUrl(context, message.getSender().getProfileUrl(), profileImage);
 
                 nicknameText.setVisibility(View.VISIBLE);
-                Log.e("Toru", "custom type: " + message.getCustomType());
-                nicknameText.setText(message.getSender().getNickname() + ", " + message.getCustomType());
+                nicknameText.setText(message.getSender().getNickname());
             }
 
             messageText.setText(message.getMessage());
