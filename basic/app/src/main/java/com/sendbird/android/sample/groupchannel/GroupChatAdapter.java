@@ -3,6 +3,7 @@ package com.sendbird.android.sample.groupchannel;
 import android.content.Context;
 import android.net.Uri;
 import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -624,6 +625,8 @@ class GroupChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             messageText.setText(message.getMessage());
             timeText.setText(DateUtils.formatTime(message.getCreatedAt()));
 
+            Log.e("Toru", "custom type: " + message.getCustomType());
+
             if (message.getUpdatedAt() > 0) {
                 editedText.setVisibility(View.VISIBLE);
             } else {
@@ -727,7 +730,8 @@ class GroupChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 ImageUtils.displayRoundImageFromUrl(context, message.getSender().getProfileUrl(), profileImage);
 
                 nicknameText.setVisibility(View.VISIBLE);
-                nicknameText.setText(message.getSender().getNickname());
+                Log.e("Toru", "custom type: " + message.getCustomType());
+                nicknameText.setText(message.getSender().getNickname() + ", " + message.getCustomType());
             }
 
             messageText.setText(message.getMessage());

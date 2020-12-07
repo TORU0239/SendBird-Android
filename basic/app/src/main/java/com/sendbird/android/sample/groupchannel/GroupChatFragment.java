@@ -141,6 +141,8 @@ public class GroupChatFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_group_chat, container, false);
 
+        Log.e("Toru", "GroupChatFragment, onCreateView");
+
         setRetainInstance(true);
 
         mRootLayout = (RelativeLayout) rootView.findViewById(R.id.layout_group_chat_root);
@@ -249,6 +251,10 @@ public class GroupChatFragment extends Fragment {
                             mChatAdapter.markAllMessagesAsRead();
                         }
                     });
+
+                    // Test Code
+                    Log.e("Toru", "GroupChannelFragment, custom type: "+ mChannel.getCustomType());
+
                     updateActionBarTitle();
                 }
             });

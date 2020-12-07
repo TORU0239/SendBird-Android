@@ -22,7 +22,8 @@ public class TextUtils {
                     continue;
                 }
 
-                names.append(", " + member.getNickname());
+//                names.append(", " + member.getNickname());
+                names.append(", " + member.getNickname() + "(" + channel.getCustomType() + ")");
             }
             return names.delete(0, 2).toString();
         } else {
@@ -34,7 +35,8 @@ public class TextUtils {
                 }
 
                 count++;
-                names.append(", " + member.getNickname());
+//                names.append(", " + member.getNickname());
+                names.append(", " + member.getNickname() + "(" + channel.getCustomType() + ")");
 
                 if(count >= 10) {
                     break;
