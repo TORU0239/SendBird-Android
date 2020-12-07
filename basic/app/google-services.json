@@ -1,43 +1,36 @@
 {
   "project_info": {
-    "project_number": "984140644677",
-    "firebase_url": "https://sendbird-sample.firebaseio.com",
-    "project_id": "sendbird-sample",
-    "storage_bucket": "sendbird-sample.appspot.com"
+    "project_number": "552822141565",
+    "project_id": "tsample-7d671",
+    "storage_bucket": "tsample-7d671.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:984140644677:android:abe06d49c04fba23",
+        "mobilesdk_app_id": "1:552822141565:android:6d9211530088672e76f714",
         "android_client_info": {
           "package_name": "com.sendbird.android.sample"
         }
       },
       "oauth_client": [
         {
-          "client_id": "984140644677-75b8ti7rnl9ojhu930phht25emuifkki.apps.googleusercontent.com",
-          "client_type": 3
-        },
-        {
-          "client_id": "984140644677-ajrt7j1g982mntarduj22mlq1dberha0.apps.googleusercontent.com",
+          "client_id": "552822141565-hj75nqe9i9ld1oa82ck94r65v3g1f23t.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDxYBEWhz5XUP8twJaGDE249SlEQUfalIc"
+          "current_key": "AIzaSyBaAreiDaOzEHYba7MeCdaGbx-SUNh7vQQ"
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
-        },
-        "ads_service": {
-          "status": 2
+          "other_platform_oauth_client": [
+            {
+              "client_id": "552822141565-hj75nqe9i9ld1oa82ck94r65v3g1f23t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

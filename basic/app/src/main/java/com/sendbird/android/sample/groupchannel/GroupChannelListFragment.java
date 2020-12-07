@@ -108,6 +108,7 @@ public class GroupChannelListFragment extends Fragment {
         SendBird.addChannelHandler(CHANNEL_HANDLER_ID, new SendBird.ChannelHandler() {
             @Override
             public void onMessageReceived(BaseChannel baseChannel, BaseMessage baseMessage) {
+                Log.e("GroupChannel", "onMessageReceived");
             }
 
             @Override
