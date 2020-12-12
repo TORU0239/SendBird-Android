@@ -25,7 +25,9 @@ import com.sendbird.android.SendBird;
 import com.sendbird.android.SendBirdException;
 import com.sendbird.android.sample.R;
 import com.sendbird.android.sample.main.ConnectionManager;
+import com.sendbird.android.sample.utils.TextUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static android.app.Activity.RESULT_OK;
@@ -287,6 +289,13 @@ public class GroupChannelListFragment extends Fragment {
     private void refreshChannelList(int numChannels) {
         mChannelListQuery = GroupChannel.createMyGroupChannelListQuery();
         mChannelListQuery.setLimit(numChannels);
+
+        // Requirement is modifying codes so to show only filtered list
+        mChannelListQuery.setIncludeEmpty(true);
+        ArrayList<String> customFilterList = new ArrayList<>();
+        customFilterList.add(TextUtils.CUSTOM_TYPE); //
+        mChannelListQuery.setCustomTypesFilter(customFilterList);
+        // end
 
         mChannelListQuery.next(new GroupChannelListQuery.GroupChannelListQueryResultHandler() {
             @Override

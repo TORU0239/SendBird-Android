@@ -73,4 +73,6 @@ public class TextUtils {
 
         return hexString.toString();
     }
+
+    public static String CUSTOM_TYPE = "Wonyoung";
 }

@@ -18,6 +18,7 @@ import com.sendbird.android.GroupChannelParams;
 import com.sendbird.android.SendBirdException;
 import com.sendbird.android.sample.R;
 import com.sendbird.android.sample.utils.PreferenceUtils;
+import com.sendbird.android.sample.utils.TextUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -162,7 +163,7 @@ public class CreateGroupChannelActivity extends AppCompatActivity
         Log.e("Toru", "createGroupChannel");
         // added by Toru for a new requirement for custom type for a group channel
         GroupChannelParams params = new GroupChannelParams()
-                                    .setCustomType("Wonyoung")
+                                    .setCustomType(TextUtils.CUSTOM_TYPE)
                                     .addUserIds(userIds);
 
         // Toru's comment
