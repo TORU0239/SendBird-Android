@@ -7,11 +7,14 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
 import com.sendbird.android.GroupChannel;
+import com.sendbird.android.GroupChannelParams;
 import com.sendbird.android.SendBirdException;
 import com.sendbird.android.sample.R;
 import com.sendbird.android.sample.utils.PreferenceUtils;
@@ -156,7 +159,14 @@ public class CreateGroupChannelActivity extends AppCompatActivity
      *                  the existing channel instance will be returned.
      */
     private void createGroupChannel(List<String> userIds, boolean distinct) {
-        GroupChannel.createChannelWithUserIds(userIds, distinct, new GroupChannel.GroupChannelCreateHandler() {
+        Log.e("Toru", "createGroupChannel");
+        // added by Toru for a new requirement for custom type for a group channel
+        GroupChannelParams params = new GroupChannelParams()
+                                    .setCustomType("Wonyoung")
+                                    .addUserIds(userIds)
+                                    .setDistinct(distinct);
+
+        GroupChannel.createChannel(params, new GroupChannel.GroupChannelCreateHandler(){
             @Override
             public void onResult(GroupChannel groupChannel, SendBirdException e) {
                 if (e != null) {
