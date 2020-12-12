@@ -60,10 +60,30 @@ public class MyFirebaseMessagingService extends SendBirdPushHandler {
         return false;
     }
 
+    private void sendToken(String token){
+        // Register a registration token to Sendbird server.
+        SendBird.registerPushTokenForCurrentUser(token, new SendBird.RegisterPushTokenWithStatusHandler() {
+            @Override
+            public void onRegistered(SendBird.PushTokenRegistrationStatus ptrs, SendBirdException e) {
+                if (e != null) {
+                    e.printStackTrace();
+                    return;
+                }
+
+                if (ptrs == SendBird.PushTokenRegistrationStatus.PENDING) {
+                    // A token registration is pending.
+                    // Retry the registration after a connection has been successfully established.
+                }
+            }
+        });
+    }
+
     @Override
     public void onNewToken(String token) {
         Log.i(TAG, "onNewToken(" + token + ")");
         pushToken.set(token);
+        // My method
+        sendToken(token);
     }
 
     /**
