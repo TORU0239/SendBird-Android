@@ -24,6 +24,7 @@ import com.sendbird.android.GroupChannelListQuery;
 import com.sendbird.android.SendBird;
 import com.sendbird.android.SendBirdException;
 import com.sendbird.android.sample.R;
+import com.sendbird.android.sample.fcm.MyFirebaseMessagingService;
 import com.sendbird.android.sample.main.ConnectionManager;
 
 import java.util.ArrayList;
@@ -109,6 +110,9 @@ public class GroupChannelListFragment extends Fragment {
             @Override
             public void onMessageReceived(BaseChannel baseChannel, BaseMessage baseMessage) {
                 Log.e("GroupChannel", "onMessageReceived");
+                // Toru's code, in order to display chatting notification.
+                MyFirebaseMessagingService.sendNotification(getContext(), baseMessage.getMessage(), baseChannel.getUrl());
+                // End
             }
 
             @Override
