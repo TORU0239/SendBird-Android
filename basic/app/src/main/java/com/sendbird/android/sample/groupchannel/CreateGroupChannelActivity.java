@@ -163,8 +163,11 @@ public class CreateGroupChannelActivity extends AppCompatActivity
         // added by Toru for a new requirement for custom type for a group channel
         GroupChannelParams params = new GroupChannelParams()
                                     .setCustomType("Wonyoung")
-                                    .addUserIds(userIds)
-                                    .setDistinct(distinct);
+                                    .addUserIds(userIds);
+
+        // Toru's comment
+        // In order to achieve the requirement of assignment, I decided not to use it.
+//                                    .setDistinct(distinct);
 
         GroupChannel.createChannel(params, new GroupChannel.GroupChannelCreateHandler(){
             @Override

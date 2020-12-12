@@ -23,6 +23,12 @@ public class TextUtils {
                 }
 
                 names.append(", " + member.getNickname());
+
+                if(!channel.getCustomType().equals("")) {
+                    names.append(" (")
+                            .append(channel.getCustomType())
+                            .append(")");
+                }
             }
             return names.delete(0, 2).toString();
         } else {
@@ -34,7 +40,13 @@ public class TextUtils {
                 }
 
                 count++;
-                names.append(", " + member.getNickname());
+                names.append(", ").append(member.getNickname());
+
+                if(!channel.getCustomType().equals("")) {
+                    names.append(" (")
+                            .append(channel.getCustomType())
+                            .append(")");
+                }
 
                 if(count >= 10) {
                     break;
