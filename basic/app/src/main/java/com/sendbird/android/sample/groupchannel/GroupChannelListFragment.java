@@ -112,7 +112,9 @@ public class GroupChannelListFragment extends Fragment {
             public void onMessageReceived(BaseChannel baseChannel, BaseMessage baseMessage) {
                 Log.e("GroupChannel", "onMessageReceived");
                 // Toru's code, in order to display chatting notification.
-                MyFirebaseMessagingService.sendNotification(getContext(), baseMessage.getMessage(), baseChannel.getUrl());
+                if(getContext() != null) {
+                    MyFirebaseMessagingService.sendNotification(getContext(), baseMessage.getMessage(), baseChannel.getUrl());
+                }
                 // End
             }
 
@@ -296,7 +298,7 @@ public class GroupChannelListFragment extends Fragment {
         mChannelListQuery.setLimit(numChannels);
 
         // Requirement is modifying codes so to show only filtered list
-        mChannelListQuery.setIncludeEmpty(true);
+        mChannelListQuery.setIncludeEmpty(true); // With this, we can show channels without message.
         ArrayList<String> customFilterList = new ArrayList<>();
         customFilterList.add(TextUtils.CUSTOM_TYPE); //
         mChannelListQuery.setCustomTypesFilter(customFilterList);
