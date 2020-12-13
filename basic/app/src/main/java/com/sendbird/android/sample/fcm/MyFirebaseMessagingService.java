@@ -32,11 +32,16 @@ import android.util.Log;
 
 import androidx.core.app.NotificationCompat;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.RemoteMessage;
 import com.sendbird.android.SendBird;
 import com.sendbird.android.SendBirdException;
 import com.sendbird.android.SendBirdPushHandler;
 import com.sendbird.android.SendBirdPushHelper;
+import com.sendbird.android.User;
 import com.sendbird.android.sample.R;
 import com.sendbird.android.sample.main.SplashActivity;
 import com.sendbird.android.sample.utils.PreferenceUtils;
@@ -73,6 +78,30 @@ public class MyFirebaseMessagingService extends SendBirdPushHandler {
                 if (ptrs == SendBird.PushTokenRegistrationStatus.PENDING) {
                     // A token registration is pending.
                     // Retry the registration after a connection has been successfully established.
+
+                    String userId = PreferenceUtils.getUserId();
+                    SendBird.connect(userId, new SendBird.ConnectHandler() {
+                        @Override
+                        public void onConnected(User user, SendBirdException e) {
+                            if (e != null) {    // Error.
+                                return;
+                            }
+
+                            FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(new OnSuccessListener<InstanceIdResult>() {
+                                @Override
+                                public void onSuccess(InstanceIdResult instanceIdResult) {
+                                    SendBird.registerPushTokenForCurrentUser(instanceIdResult.getToken(), new SendBird.RegisterPushTokenWithStatusHandler() {
+                                        @Override
+                                        public void onRegistered(SendBird.PushTokenRegistrationStatus status, SendBirdException e) {
+                                            if (e != null) {        // Error.
+                                                return;
+                                            }
+                                        }
+                                    });
+                                }
+                            });
+                        }
+                    });
                 }
             }
         });
